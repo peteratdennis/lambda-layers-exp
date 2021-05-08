@@ -9,7 +9,6 @@
  * @returns {array}
  */
  const getSupportLoggingLevels = () => {
-  // For some unknown reason process.env.loggingLevel is undefined when running tests on Jenkins.
   const level = process.env.loggingLevel ? process.env.loggingLevel.toLowerCase() : 'error';
   return [
     'emergency',

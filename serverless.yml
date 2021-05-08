@@ -1,5 +1,6 @@
 
-service: peter-layers-exp
+# export LAYERS_EXP_SERVICE=my-layers-exp
+service: ${self:custom.serviceName}
 
 provider:
   name: aws
@@ -8,7 +9,19 @@ provider:
   region: eu-west-1
   logRetentionInDays: 7
   versionFunctions: false
+  environment:
+    loggingLevel: info
+
+custom:
+  serviceName: ${env:LAYERS_EXP_SERVICE, "layers-exp"}
+
+layers:
+  Libs:
+    name: ${self:service}-${sls:stage}-Libs
+    path: layers
 
 functions:
   hello:
     handler: src/lambda/hello.handler
+    layers:
+      - {Ref: LibsLambdaLayer}

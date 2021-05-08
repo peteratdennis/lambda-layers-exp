@@ -1,9 +1,9 @@
-
 {
   "scripts": {
     "deploy": "sls deploy --verbose",
     "destroy": "sls remove --verbose"
   },
+  "license": "ISC",
   "devDependencies": {
     "serverless": "^2.40.0"
   }
