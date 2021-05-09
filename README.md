@@ -8,6 +8,11 @@ There are two services.
 ## Deploy
 
 ### Layers
+
+AWS lambda does not work with ES6 so the files need to be converted by Bable.
+- `yarn build`
+Which will convert `/src/libs` and copy them to the `layers/nodejs/libs` directory
+
 Deploy the layers first as the functions in the top level depend on them:
 - `cd layers/nodejs`
 - create a name for the service: `export LAYERS_EXP_LAYER_SERVICE=my-layers-layer`
