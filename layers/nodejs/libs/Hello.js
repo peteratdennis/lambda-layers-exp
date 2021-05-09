@@ -11,26 +11,31 @@
  * The require works fine though.
  * I mention it, if in future there's a problem.
  */
-var _require = require('uuid'),
-    uuidv4 = _require.v4; // Modules from this directory.
+const {
+  v4: uuidv4
+} = require('uuid'); // Modules from this directory.
 
 
-var Logger = require('./Logger');
+const Logger = require('./Logger');
 
-var capitaliseFirstLetter = require('./Capitalise')["default"].capitaliseFirstLetter;
+const {
+  capitaliseFirstLetter
+} = require('./Capitalise').default;
 
-var getMd5 = require('./foo/bar/Baz')["default"].getMd5;
+const {
+  getMd5
+} = require('./foo/bar/Baz').default;
 
-var handler = function handler(event) {
+const handler = event => {
   Logger.info('Event', event);
   return {
     message: capitaliseFirstLetter('hello world!'),
-    event: event,
+    event,
     uuid: uuidv4(),
     md5: getMd5('Loaded from node_modules from sub directory')
   };
 };
 
 module.exports = {
-  handler: handler
+  handler
 };
