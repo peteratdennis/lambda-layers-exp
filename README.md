@@ -3,7 +3,7 @@
 ## Services
 There are two services.
  1. The top level service which contains the function `hello`
- 2. layers/nodejs/serverless.yml Which deploys the layer containing node_modules & the libs directory
+ 2. `layers/nodejs/serverless.yml` Which deploys the layer containing node_modules & the libs directory
 
 ## Deploy
 
@@ -23,3 +23,7 @@ Now the functions service can be deployed:
 
 ## Invoke
 Invoke the function with: `yarn sls invoke --function hello --data='{"some": "stuff"}'`
+
+## Using the libs
+
+Libs are located in `/opt/libs` when deployed.
