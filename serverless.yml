@@ -15,11 +15,26 @@ provider:
 custom:
   serviceName: ${env:LAYERS_EXP_SERVICE, "layers-exp"}
   libsLayerServiceName: ${env:LAYERS_EXP_LAYER_SERVICE, "layers-exp-layer"}
-  # This is the exported name from layers/nodejs/serverless.yml
-  libsLayerService: ${self:custom.libsLayerServiceName}-${sls:stage}-LibsLambdaLayer
+  libsLayerVersion: 5 # The latest version of the layer (gotta be a better way)
+  libsLayerArn:
+    Fn::Join:
+      - ''
+      - - 'arn:aws:lambda:'
+        - Ref: 'AWS::Region'
+        - ':'
+        - Ref: 'AWS::AccountId'
+        - ':layer:'
+        - ${self:custom.libsLayerServiceName}
+        - '-'
+        - ${sls:stage}
+        - '-'
+        - 'Libs'
+        - ':'
+        - ${self:custom.libsLayerVersion}
 
 functions:
   hello:
     handler: src/lambda/hello.handler
     layers:
-      - Fn::ImportValue: ${self:custom.libsLayerService}
+    # Can't use Fn::ImportValue as it means the layer cannot be updated.
+      - ${self:custom.libsLayerArn}
