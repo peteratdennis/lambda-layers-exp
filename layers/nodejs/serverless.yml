@@ -1,0 +1,26 @@
+
+# export LAYERS_EXP_LAYER_SERVICE=my-layers-exp-layer
+service: ${self:custom.serviceName}
+
+provider:
+  name: aws
+  runtime: nodejs14.x
+  stage: dev
+  region: eu-west-1
+
+
+custom:
+  serviceName: ${env:LAYERS_EXP_LAYER_SERVICE, "layers-exp-layer"}
+
+layers:
+  Libs:
+    name: ${self:service}-${sls:stage}-Libs
+    path: ./
+
+resources:
+  Outputs:
+    LibsLayerExport:
+        Value:
+          Ref: LibsLambdaLayer
+        Export:
+          Name: ${self:service}-${sls:stage}-LibsLambdaLayer
