@@ -15,7 +15,7 @@ provider:
 custom:
   serviceName: ${env:LAYERS_EXP_SERVICE, "layers-exp"}
   libsLayerServiceName: ${env:LAYERS_EXP_LAYER_SERVICE, "layers-exp-layer"}
-  libsLayerVersion: 5 # The latest version of the layer (gotta be a better way)
+  libsLayerVersion: 7 # The latest version of the layer (gotta be a better way)
   libsLayerArn:
     Fn::Join:
       - ''

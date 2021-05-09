@@ -16,3 +16,11 @@ layers:
   Libs:
     name: ${self:service}-${sls:stage}-Libs
     path: ./
+
+resources:
+  Outputs:
+    LibsLayerExport:
+        Value:
+          Ref: LibsLambdaLayer
+        Export:
+          Name: ${self:service}-${sls:stage}-LibsLambdaLayer
