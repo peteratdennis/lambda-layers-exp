@@ -1,7 +1,7 @@
 {
   "scripts": {
-    "deploy": "sls deploy --verbose",
-    "destroy": "sls remove --verbose"
+    "sls": "sls",
+    "deploy": "sls deploy --verbose"
   },
   "license": "ISC",
   "devDependencies": {
