@@ -1,10 +1,12 @@
 {
   "scripts": {
-    "sls": "sls"
+    "sls": "sls",
+    "deploy": "sls deploy --verbose"
   },
   "license": "ISC",
   "dependencies": {
-    "uuid": "^8.3.2"
+    "uuid": "^8.3.2",
+    "md5": "^2.3.0"
   },
   "devDependencies": {
     "serverless": "^2.40.0"

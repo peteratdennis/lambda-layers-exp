@@ -15,6 +15,7 @@ const { v4: uuidv4 } = require('uuid');
 // Modules from this directory.
 const Logger = require('./Logger');
 const { capitaliseFirstLetter } = require('./Capitalise');
+const { getMd5 } = require('./foo/bar/Baz');
 
 const handler = (event) => {
   Logger.info('Event', event);
@@ -22,6 +23,7 @@ const handler = (event) => {
     message: capitaliseFirstLetter('hello world!'),
     event,
     uuid: uuidv4(),
+    md5: getMd5('Loaded from node_modules from sub directory'),
   };
 };
 
