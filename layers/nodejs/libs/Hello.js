@@ -1,3 +1,4 @@
+"use strict";
 
 /**
  * A module from node_modules located at layers/nodejs/node_modules.
@@ -10,23 +11,28 @@
  * The require works fine though.
  * I mention it, if in future there's a problem.
  */
-const { v4: uuidv4 } = require('uuid');
+var _require = require('uuid'),
+    uuidv4 = _require.v4; // Modules from this directory.
 
-// Modules from this directory.
-const Logger = require('./Logger');
-const { capitaliseFirstLetter } = require('./Capitalise');
-const { getMd5 } = require('./foo/bar/Baz');
 
-const handler = (event) => {
+var Logger = require('./Logger');
+
+var _require2 = require('./Capitalise'),
+    capitaliseFirstLetter = _require2.capitaliseFirstLetter;
+
+var _require3 = require('./foo/bar/Baz'),
+    getMd5 = _require3.getMd5;
+
+var handler = function handler(event) {
   Logger.info('Event', event);
   return {
     message: capitaliseFirstLetter('hello world!'),
-    event,
+    event: event,
     uuid: uuidv4(),
-    md5: getMd5('Loaded from node_modules from sub directory'),
+    md5: getMd5('Loaded from node_modules from sub directory')
   };
 };
 
 module.exports = {
-  handler,
+  handler: handler
 };
