@@ -13,8 +13,8 @@
 
  // Modules from this directory.
  const Logger = require('./Logger');
- const { capitaliseFirstLetter } = require('./Capitalise');
- const { getMd5 } = require('./foo/bar/Baz');
+ const { capitaliseFirstLetter } = require('./Capitalise').default;
+ const { getMd5 } = require('./foo/bar/Baz').default;
 
  const handler = (event) => {
    Logger.info('Event', event);

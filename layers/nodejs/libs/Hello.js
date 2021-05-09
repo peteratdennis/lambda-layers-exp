@@ -17,11 +17,9 @@ var _require = require('uuid'),
 
 var Logger = require('./Logger');
 
-var _require2 = require('./Capitalise'),
-    capitaliseFirstLetter = _require2.capitaliseFirstLetter;
+var capitaliseFirstLetter = require('./Capitalise')["default"].capitaliseFirstLetter;
 
-var _require3 = require('./foo/bar/Baz'),
-    getMd5 = _require3.getMd5;
+var getMd5 = require('./foo/bar/Baz')["default"].getMd5;
 
 var handler = function handler(event) {
   Logger.info('Event', event);
